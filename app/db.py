@@ -20,7 +20,7 @@ class Post(Base):
     caption = Column(Text)
     url = Column(String, nullable=False)
     file_type = Column(String, nullable=False)
-    file_name = Column(DateTime, nullable=False)
+    file_name = Column(String, nullable=False)
     create_at = Column(DateTime, default=datetime.now)
     
     
