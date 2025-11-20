@@ -3,8 +3,16 @@ from fastapi import FastAPI, HTTPException
 app = FastAPI()
 
 
-text_posts = {1:{"title":"Nissan 400z","content":"the Nissan 400z is awesome!"}, 
-                 2:{"title":"Nissan 240z","content":"the Nissan 240z is a legend !"}}
+text_posts = {1: {"title": "Engine Basics", "content": "The engine converts fuel into motion."},
+    2: {"title": "Transmission", "content": "It transfers engine power to the wheels."},
+    3: {"title": "Suspension", "content": "Suspension keeps the ride smooth and stable."},
+    4: {"title": "Braking System", "content": "Disc brakes provide strong stopping power."},
+    5: {"title": "Air Intake", "content": "Fresh air improves combustion efficiency."},
+    6: {"title": "Exhaust System", "content": "It expels gases and reduces noise."},
+    7: {"title": "Fuel Injection", "content": "Injectors precisely deliver fuel to the engine."},
+    8: {"title": "Steering System", "content": "It allows the driver to control direction."},
+    9: {"title": "Cooling System", "content": "Coolant prevents the engine from overheating."},
+    10: {"title": "Battery", "content": "The battery powers electronics and starts the engine."}}
 
 @app.get("/posts")
 def get_all_posts():
