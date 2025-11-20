@@ -15,7 +15,9 @@ text_posts = {1: {"title": "Engine Basics", "content": "The engine converts fuel
     10: {"title": "Battery", "content": "The battery powers electronics and starts the engine."}}
 
 @app.get("/posts")
-def get_all_posts():
+def get_all_posts(limit: int = None):
+    if limit:
+        return list(text_posts.values())[:limit]
     return text_posts
 
 @app.get("/posts/{id}")
