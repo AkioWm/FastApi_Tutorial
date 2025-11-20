@@ -6,11 +6,11 @@ from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await create_db_and_tables
+    await create_db_and_tables()
     yield
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 
 text_posts = {1: {"title": "Engine Basics", "content": "The engine converts fuel into motion."},

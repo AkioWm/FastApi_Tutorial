@@ -8,7 +8,7 @@ from sqlalchemy.orm import DeclarativeBase, relationship
 from datetime import datetime
 
 
-DATABASE_URL = "sqlite+aiosqlite:/// ./test.db"
+DATABASE_URL = "sqlite+aiosqlite:///./test.db"
 
 class Base(DeclarativeBase):
     pass
