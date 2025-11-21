@@ -62,8 +62,7 @@ async def upload_file(
 
 @app.get("/feed")
 async def get_feed(
-    session: AsyncSession = Depends(get_async_session)
-):
+    session: AsyncSession = Depends(get_async_session)):
     
     result = await session.execute(select(Post).order_by(Post.create_at.desc()))
     posts = [row[0] for row in result.all()]
@@ -83,6 +82,24 @@ async def get_feed(
     
     return {"posts": posts_data}
 
+
+
+@app.delete("/posts/{post_id}")
+async def delete_post(post_id: str, session: AsyncSession = Depends(get_async_session)):
+    try:
+        post_uuid = uuid.UUID(post_id)
+        result = await session.execute(select(Post).where(Post.id == post_uuid))
+        post = result.scalars().first()
+        
+        if not post:
+            raise HTTPException(status_code=404, detail="Post not found")
+        await session.delete(post)
+        await session.commit()
+        
+        return {"success": True, "message": "Post deleted successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 # @app.get("/posts/{id}")
 # def get_post(id: int) -> PostResponse:
 
