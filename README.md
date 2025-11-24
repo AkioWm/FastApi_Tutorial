@@ -1,4 +1,1 @@
-AFastApi tutorial project from this [video]([url](https://youtu.be/SR5NYCdzKkc?si=WkUmW0_WUqbtkcm3))
-
-
-
+A project inspired by Tech With Tim’s FastAPI tutorial, built from a real-world example.
