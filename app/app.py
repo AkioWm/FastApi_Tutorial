@@ -110,7 +110,7 @@ async def delete_post(
         if post.user_id != user.id:
             raise HTTPException(status_code=403, detail="Forbidden operation, you don't have permission to delete this post")
         
-        await session.delete(post)
+        session.delete(post)
         await session.commit()
         
         return {"success": True, "message": "Post deleted successfully"}
